@@ -1,10 +1,6 @@
 {
     "name": "storyg/pps",
     "type": "library",
-    "require-dev": {
-        "php":">=7.1",
-        "phpunit/phpunit": "^7"
-    },
     "license": "MIT",
     "authors": [
         {
@@ -12,7 +8,17 @@
             "email": "garam-park@naver.com"
         }
     ],
+    "require-dev": {
+        "php":">=7.1",
+        "phpunit/phpunit": "^7"
+    },
     "require": {
         "php":">=7.1"
+    },
+    "autoload": {
+        "psr-4": {"StoryG\\Ppcs\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"StoryG\\Ppcs\\Examples\\":"examples/"}
     }
 }
