@@ -62,14 +62,11 @@ class ArrayObj extends \ArrayObject
 
         if($index < 0){
             $size = count($this);
-            $index = $size + $size%$index - 1;
+            $index = $index%($size);
+            if($index < 0)
+                $index = $size + $index ;
         }
         return parent::offsetGet($index);
-    }
-
-    public function last()
-    {
-        return end($this);
     }
     
 }

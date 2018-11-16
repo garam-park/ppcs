@@ -92,15 +92,25 @@ class CatsTest extends TestCase
         $this->assertTrue($cats[2] === $navi);
         $this->assertTrue($cats[3] === $rh);
 
-        $this->assertTrue($cats[-4] === $kong);
-        $this->assertTrue($cats[-3] === $dkong);
-        $this->assertTrue($cats[-2] === $navi);
         $this->assertTrue($cats[-1] === $rh);
+        $this->assertTrue($cats[-2] === $navi);
+        $this->assertTrue($cats[-3] === $dkong);
+        $this->assertTrue($cats[-4] === $kong);
 
-        $this->assertTrue($cats[-8] === $kong);
-        $this->assertTrue($cats[-7] === $dkong);
-        $this->assertTrue($cats[-6] === $navi);
         $this->assertTrue($cats[-5] === $rh);
+        $this->assertTrue($cats[-6] === $navi);
+        $this->assertTrue($cats[-7] === $dkong);
+        $this->assertTrue($cats[-8] === $kong);
+
+        $this->assertTrue($cats[-9] === $rh);
+        $this->assertTrue($cats[-10] === $navi);
+        $this->assertTrue($cats[-11] === $dkong);
+        $this->assertTrue($cats[-12] === $kong);
+
+        $this->assertTrue($cats[-13] === $rh);
+        $this->assertTrue($cats[-14] === $navi);
+        $this->assertTrue($cats[-15] === $dkong);
+        $this->assertTrue($cats[-16] === $kong);
 
         return $cats;
     }
