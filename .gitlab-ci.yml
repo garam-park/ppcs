@@ -1,0 +1,16 @@
+image: php:7.1
+
+cache:
+  paths:
+  - vendor/
+  - /usr/local/bin
+  
+before_script:
+- apt-get update && apt-get install -y unzip git
+- curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+- composer install
+- vendor/bin/phpunit
+
+test:unit:
+  script:
+  - vendor/bin/phpunit
