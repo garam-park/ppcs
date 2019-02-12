@@ -12,11 +12,11 @@ class Cat
      */
     protected $name;
     /**
-     * @var int
+     * @var float
      */
     protected $age;
 
-    public function __construct(string $name,int $age) {
+    public function __construct(string $name,float $age) {
         $this->name = $name;
         $this->age  = $age;
     }
@@ -29,7 +29,7 @@ class Cat
         $this->name = $name;
     }
 
-    public function changeAge(string $age)
+    public function changeAge(float $age)
     {
         if($age < 0)
             throw new \Exception("Age of Cat cannot empty negative", 1);
