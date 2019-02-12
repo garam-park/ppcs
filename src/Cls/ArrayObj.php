@@ -68,5 +68,45 @@ class ArrayObj extends \ArrayObject
         }
         return parent::offsetGet($index);
     }
+
+    public function toArray()
+    {
+        $ret_arr = [];
+        $items = $this->getArrayCopy();
+
+        foreach ($items as $item) {
+            $ret_arr[] =$this->changeArray($item);
+        }
+
+        return $ret_arr;
+    }
+
+    protected function changeArray($obj)
+    {
+        $new = [];
+
+        if ($obj instanceof ArrayObj) {
+            $new = $obj->getArrayCopy();
+        } else if (is_object($obj)) {
+            
+            $reflectionClass = new \ReflectionClass(get_class($obj));
+
+            foreach ($reflectionClass->getProperties() as $property) {
+                $property->setAccessible(true);
+                $new[$property->getName()] = $this->changeArray($property->getValue($obj));
+                $property->setAccessible(false);
+            }
+        } else if(is_array($obj)) {
+            
+            foreach ($obj as $key => $val) {
+                $new[$key] = $this->changeArray($val);
+            }
+
+        } else {
+            $new = $obj;
+        }
+
+        return $new;
+    }
     
 }

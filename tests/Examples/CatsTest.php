@@ -115,4 +115,28 @@ class CatsTest extends TestCase
         return $cats;
     }
 
+    public function testToArray()
+    {
+        $kong  = new Cat('콩이',1);
+        $dkong = new Cat('콩이',1);
+        $navi  = new Cat('나비',1.5);
+        $rh  = new Cat('람현이',1.5);
+        
+        $cats = new Cats([
+            $kong,
+            $dkong,
+            $navi,
+            $rh
+        ]);
+        
+        $cat_arr = $cats->toArray();
+
+        $this->assertEquals([
+            ['name'=>'콩이','age'=>1],
+            ['name'=>'콩이','age'=>1],
+            ['name'=>'나비','age'=>1.5],
+            ['name'=>'람현이','age'=>1.5],
+        ],$cat_arr);
+    }
+
 }
