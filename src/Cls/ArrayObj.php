@@ -3,8 +3,9 @@
 namespace StoryG\Ppcs\Cls;
 
 use StoryG\Ppcs\Traits\ValueObj;
+use StoryG\Ppcs\Contracts\Arrayable;
 
-class ArrayObj extends \ArrayObject
+class ArrayObj extends \ArrayObject implements Arrayable
 {
     protected $T;
 
@@ -60,6 +61,9 @@ class ArrayObj extends \ArrayObject
 
     public function offsetGet($index){
 
+        if($index === 'T')
+            return $this->T;
+            
         if($index < 0){
             $size = count($this);
             $index = $index%($size);
@@ -69,7 +73,7 @@ class ArrayObj extends \ArrayObject
         return parent::offsetGet($index);
     }
 
-    public function toArray()
+    public function toArray() : array 
     {
         $ret_arr = [];
         $items = $this->getArrayCopy();
@@ -81,6 +85,12 @@ class ArrayObj extends \ArrayObject
         return $ret_arr;
     }
 
+    /**
+     * 입력된 인풋을 array 형태로 변경해서 리턴해줌
+     *
+     * @param [type] $obj
+     * @return void
+     */
     protected function changeArray($obj)
     {
         $new = [];
